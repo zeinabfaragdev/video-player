@@ -8,6 +8,7 @@ const volumeBar = document.querySelector(".volume-bar");
 const currentTime = document.querySelector(".time-elapsed");
 const duration = document.querySelector(".time-duration");
 const fullScreenBtn = document.querySelector(".fullscreen");
+const playerSpeed = document.querySelector(".player-speed");
 
 // Play & Pause ----------------------------------- //
 function togglePlay() {
@@ -85,6 +86,11 @@ function volumeIconClass() {
 }
 // Change Playback Speed -------------------- //
 
+function changeSpeed() {
+  let speed = playerSpeed.value;
+  video.playbackRate = speed;
+}
+
 // Fullscreen ------------------------------- //
 
 playBtn.addEventListener("click", togglePlay);
@@ -96,6 +102,7 @@ video.addEventListener("volumechange", volumeIconClass);
 volumeIcon.addEventListener("click", toggleMute);
 volumeRange.addEventListener("click", changeVolume);
 progressRange.addEventListener("click", progressBarPlay);
+playerSpeed.addEventListener("change", changeSpeed);
 document.addEventListener("keydown", (event) => {
   if (event.code === "Space") {
     togglePlay();
